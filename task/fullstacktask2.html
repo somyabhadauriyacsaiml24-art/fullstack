@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Product Listing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#F8FAFC',
+                        heading: '#111827',
+                        body: '#6B7280',
+                        primary: '#2563EB',
+                        sale: '#DC2626',
+                        bordercolor: '#E5E7EB',
+                        rating: '#F59E0B',
+                        success: '#10B981'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-background text-body font-sans antialiased min-h-screen">
+
+    <header class="bg-heading text-white border-b border-bordercolor sticky top-0 z-50 shadow-md">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 py-4 flex items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <button class="md:hidden text-white hover:text-primary transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                <div class="text-[20px] font-bold text-white flex items-center gap-2 tracking-wide">
+                    <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    SHOPKART.
+                </div>
+            </div>
+
+            <div class="hidden md:flex flex-1 max-w-2xl relative">
+                <input type="text" placeholder="Search for products, brands and more..." class="w-full bg-white/10 border border-white/20 rounded-full pl-6 pr-12 py-2.5 text-[14px] text-white placeholder-gray-300 focus:outline-none focus:border-primary focus:bg-white/20 transition-all">
+                <svg class="w-5 h-5 absolute right-4 top-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+
+            <div class="flex items-center gap-5 text-white">
+                <button class="hover:text-primary transition-colors flex items-center gap-1.5">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    <span class="hidden lg:block text-[14px] font-medium">Account</span>
+                </button>
+                <button class="hover:text-primary transition-colors flex items-center gap-1.5 relative">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <span class="hidden lg:block text-[14px] font-medium">Cart</span>
+                    <span class="absolute -top-2 -right-2 bg-sale text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">3</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1440px] mx-auto px-4 md:px-8 py-8">
+        
+        <div class="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="text-[13px] text-body flex gap-2 items-center bg-white px-4 py-2 rounded-lg border border-bordercolor shadow-sm w-fit">
+                <a href="#" class="hover:text-primary font-medium">Home</a>
+                <span>/</span>
+                <a href="#" class="hover:text-primary font-medium">Electronics</a>
+                <span>/</span>
+                <span class="text-primary font-semibold">Laptops</span>
+            </div>
+            
+            <div class="flex lg:hidden gap-3 w-full sm:w-auto">
+                <button class="flex-1 sm:flex-none bg-white border border-bordercolor px-5 py-2.5 rounded-lg flex items-center justify-center gap-2 font-medium text-heading shadow-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                    Filters
+                </button>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row-reverse gap-[32px]">
+            
+            <aside class="hidden lg:block w-[240px] shrink-0 bg-white p-5 rounded-[12px] border border-bordercolor h-fit shadow-sm">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-bordercolor">
+                    <h2 class="text-[16px] font-semibold text-heading">Filter Products</h2>
+                    <button class="text-[13px] text-primary hover:underline">Clear All</button>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-[14px] font-semibold text-heading mb-3 uppercase tracking-wider text-gray-500 text-xs">Categories</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center justify-between text-[14px] cursor-pointer group">
+                            <div class="flex items-center gap-3 text-heading group-hover:text-primary transition-colors">
+                                <input type="checkbox" checked class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4"> Laptops
+                            </div>
+                            <span class="text-xs text-body bg-background px-2 py-0.5 rounded-full">124</span>
+                        </label>
+                        <label class="flex items-center justify-between text-[14px] cursor-pointer group">
+                            <div class="flex items-center gap-3 text-heading group-hover:text-primary transition-colors">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4"> Desktops
+                            </div>
+                            <span class="text-xs text-body bg-background px-2 py-0.5 rounded-full">85</span>
+                        </label>
+                        <label class="flex items-center justify-between text-[14px] cursor-pointer group">
+                            <div class="flex items-center gap-3 text-heading group-hover:text-primary transition-colors">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4"> Tablets
+                            </div>
+                            <span class="text-xs text-body bg-background px-2 py-0.5 rounded-full">42</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-[14px] font-semibold text-heading mb-3 uppercase tracking-wider text-gray-500 text-xs">Price Range</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 text-[14px] cursor-pointer text-heading hover:text-primary transition-colors">
+                            <input type="radio" name="price" class="border-gray-300 text-primary focus:ring-primary w-4 h-4"> Under ₹25,000
+                        </label>
+                        <label class="flex items-center gap-3 text-[14px] cursor-pointer text-heading hover:text-primary transition-colors">
+                            <input type="radio" name="price" checked class="border-gray-300 text-primary focus:ring-primary w-4 h-4"> ₹25,000 - ₹50,000
+                        </label>
+                        <label class="flex items-center gap-3 text-[14px] cursor-pointer text-heading hover:text-primary transition-colors">
+                            <input type="radio" name="price" class="border-gray-300 text-primary focus:ring-primary w-4 h-4"> Above ₹50,000
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-[14px] font-semibold text-heading mb-3 uppercase tracking-wider text-gray-500 text-xs">Brands</h3>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="flex items-center gap-2 text-[13px] cursor-pointer bg-background border border-bordercolor px-2 py-1.5 rounded hover:border-primary transition-colors">
+                            <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-3.5 h-3.5"> Dell
+                        </label>
+                        <label class="flex items-center gap-2 text-[13px] cursor-pointer bg-background border border-bordercolor px-2 py-1.5 rounded hover:border-primary transition-colors">
+                            <input type="checkbox" checked class="rounded border-gray-300 text-primary focus:ring-primary w-3.5 h-3.5"> HP
+                        </label>
+                        <label class="flex items-center gap-2 text-[13px] cursor-pointer bg-background border border-bordercolor px-2 py-1.5 rounded hover:border-primary transition-colors">
+                            <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-3.5 h-3.5"> Lenovo
+                        </label>
+                        <label class="flex items-center gap-2 text-[13px] cursor-pointer bg-background border border-bordercolor px-2 py-1.5 rounded hover:border-primary transition-colors">
+                            <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary w-3.5 h-3.5"> Apple
+                        </label>
+                    </div>
+                </div>
+
+                <button class="w-full bg-heading hover:bg-black text-white py-2.5 rounded-lg font-medium transition-colors text-[14px] shadow-md">
+                    Apply Filters
+                </button>
+            </aside>
+
+            <div class="flex-1">
+                
+                <div class="hidden lg:flex justify-between items-center mb-6 bg-white p-4 rounded-[12px] border border-bordercolor shadow-sm">
+                    <span class="text-[14px] font-medium text-heading">Showing <span class="text-primary font-bold">1-4</span> of 12 results</span>
+                    <div class="flex items-center gap-3 text-[14px]">
+                        <span class="text-body">Sort by:</span>
+                        <select class="bg-background border border-bordercolor rounded-md px-3 py-1.5 font-medium text-heading focus:ring-1 focus:ring-primary focus:border-primary cursor-pointer outline-none">
+                            <option>Most Popular</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest Arrivals</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[24px]">
+                    
+                    <div class="bg-white border border-bordercolor rounded-[12px] p-[16px] flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative overflow-hidden h-full">
+                        <button class="absolute top-4 left-4 text-gray-300 hover:text-sale z-10 transition-colors bg-white/80 p-1.5 rounded-full backdrop-blur-sm shadow-sm">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                        <span class="absolute top-4 right-4 bg-sale text-white text-[11px] font-bold px-2.5 py-1 rounded-full z-10 shadow-sm uppercase tracking-wider">Sale</span>
+                        
+                        <div class="h-[220px] w-full mb-5 overflow-hidden flex items-center justify-center bg-background rounded-lg">
+                            <div class="w-full h-full bg-gray-200 transform group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-gray-500 font-medium">Dell Inspiron Image</div>
+                        </div>
+                        
+                        <div class="flex-1 flex flex-col">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[13px] text-body">Laptops</span>
+                                <div class="flex items-center gap-1 bg-rating/10 px-2 py-0.5 rounded text-rating">
+                                    <span class="text-[12px]">★</span>
+                                    <span class="text-[12px] font-bold">4.5</span>
+                                </div>
+                            </div>
+                            <h3 class="text-[16px] font-semibold text-heading mb-3 leading-tight group-hover:text-primary transition-colors">Dell Inspiron 15 Series</h3>
+                            
+                            <div class="mt-auto">
+                                <div class="flex items-end gap-2 mb-4">
+                                    <span class="text-[20px] font-bold text-heading">₹45,990</span>
+                                    <span class="text-[14px] line-through text-body mb-0.5">₹50,990</span>
+                                </div>
+                                <button class="w-full bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold text-[14px] transition-all duration-300">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-bordercolor rounded-[12px] p-[16px] flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative overflow-hidden h-full">
+                        <button class="absolute top-4 left-4 text-gray-300 hover:text-sale z-10 transition-colors bg-white/80 p-1.5 rounded-full backdrop-blur-sm shadow-sm">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                        <span class="absolute top-4 right-4 bg-success text-white text-[11px] font-bold px-2.5 py-1 rounded-full z-10 shadow-sm uppercase tracking-wider">New</span>
+                        
+                        <div class="h-[220px] w-full mb-5 overflow-hidden flex items-center justify-center bg-background rounded-lg">
+                            <div class="w-full h-full bg-gray-200 transform group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-gray-500 font-medium">HP Pavilion Image</div>
+                        </div>
+                        
+                        <div class="flex-1 flex flex-col">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[13px] text-body">Laptops</span>
+                                <div class="flex items-center gap-1 bg-rating/10 px-2 py-0.5 rounded text-rating">
+                                    <span class="text-[12px]">★</span>
+                                    <span class="text-[12px] font-bold">4.3</span>
+                                </div>
+                            </div>
+                            <h3 class="text-[16px] font-semibold text-heading mb-3 leading-tight group-hover:text-primary transition-colors">HP Pavilion Gaming</h3>
+                            
+                            <div class="mt-auto">
+                                <div class="flex items-end gap-2 mb-4">
+                                    <span class="text-[20px] font-bold text-heading">₹52,990</span>
+                                    <span class="text-[14px] line-through text-body mb-0.5">₹59,990</span>
+                                </div>
+                                <button class="w-full bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold text-[14px] transition-all duration-300">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-bordercolor rounded-[12px] p-[16px] flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative overflow-hidden h-full">
+                        <button class="absolute top-4 left-4 text-gray-300 hover:text-sale z-10 transition-colors bg-white/80 p-1.5 rounded-full backdrop-blur-sm shadow-sm">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                        
+                        <div class="h-[220px] w-full mb-5 overflow-hidden flex items-center justify-center bg-background rounded-lg">
+                            <div class="w-full h-full bg-gray-200 transform group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-gray-500 font-medium">Lenovo IdeaPad Image</div>
+                        </div>
+                        
+                        <div class="flex-1 flex flex-col">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[13px] text-body">Laptops</span>
+                                <div class="flex items-center gap-1 bg-rating/10 px-2 py-0.5 rounded text-rating">
+                                    <span class="text-[12px]">★</span>
+                                    <span class="text-[12px] font-bold">4.2</span>
+                                </div>
+                            </div>
+                            <h3 class="text-[16px] font-semibold text-heading mb-3 leading-tight group-hover:text-primary transition-colors">Lenovo IdeaPad Slim 3</h3>
+                            
+                            <div class="mt-auto">
+                                <div class="flex items-end gap-2 mb-4">
+                                    <span class="text-[20px] font-bold text-heading">₹38,990</span>
+                                </div>
+                                <button class="w-full bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold text-[14px] transition-all duration-300">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-bordercolor rounded-[12px] p-[16px] flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative overflow-hidden h-full">
+                        <button class="absolute top-4 left-4 text-sale z-10 transition-colors bg-white/80 p-1.5 rounded-full backdrop-blur-sm shadow-sm">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                        
+                        <div class="h-[220px] w-full mb-5 overflow-hidden flex items-center justify-center bg-background rounded-lg">
+                            <div class="w-full h-full bg-gray-200 transform group-hover:scale-105 transition-transform duration-500 flex items-center justify-center text-gray-500 font-medium">MacBook Air Image</div>
+                        </div>
+                        
+                        <div class="flex-1 flex flex-col">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[13px] text-body">Laptops</span>
+                                <div class="flex items-center gap-1 bg-rating/10 px-2 py-0.5 rounded text-rating">
+                                    <span class="text-[12px]">★</span>
+                                    <span class="text-[12px] font-bold">4.8</span>
+                                </div>
+                            </div>
+                            <h3 class="text-[16px] font-semibold text-heading mb-3 leading-tight group-hover:text-primary transition-colors">MacBook Air M2 Chip</h3>
+                            
+                            <div class="mt-auto">
+                                <div class="flex items-end gap-2 mb-4">
+                                    <span class="text-[20px] font-bold text-heading">₹93,090</span>
+                                    <span class="text-[14px] line-through text-body mb-0.5">₹99,900</span>
+                                </div>
+                                <button class="w-full bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold text-[14px] transition-all duration-300">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
